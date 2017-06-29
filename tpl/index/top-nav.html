@@ -1,0 +1,24 @@
+<nav id="nav">
+    <div class="logo">
+    {if $indexauth neq ''}
+        <a href="index.php?controller=index&method=user&id={$indexauth.id}" data-uid="{$indexauth.id}" class="user">{$indexauth.username}</a>
+    {else}
+        <a data-toggle="modal" data-target="#signin" id="js-signin-btn">登录</a>
+        <a data-toggle="modal" data-target="#signin" id="js-signup-btn">注册</a>
+    {/if}
+    </div>
+    <ul class="menu">
+        <li><a href="index.php">首页</a></li>
+        <li><a href="index.php?controller=index&method=article">全部博文</a></li>
+        <li><a href="index.php?controller=index&method=wenda">技术问答</a></li>
+        <li id="sidebar_trigger"><a href="javascript:;">菜单</a></li>
+    </ul>
+    <div class="search-wrap">
+        <div class="search-area">
+            <input type="text" class="search-input" id="js-top-search-ipt" autocomplete="off" placeholder="搜索本站">
+        </div>
+        <div class="search-btn js-top-search">
+            <i class="iconfont icon-sousuo_sousuo"></i>
+        </div>
+    </div>
+</nav>

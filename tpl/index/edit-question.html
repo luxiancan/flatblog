@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>{if $data|@count neq 0}编辑问题{else}发布问题{/if} - 七院创新基地</title>
+    {include file='index/link_css.html'}
+</head>
+<body>
+    <div class="main-wrapper article">
+        <header><!-- 页头开始 -->
+            {include file='index/top-nav.html'}
+            <div id="banner">
+                <div class="banner-mask">
+                    <div class="inner">
+                        <h1 class="det">一个聪明人，永远会发问</h1>
+                    </div>
+                </div>
+            </div>
+        </header><!-- 页头结束 -->
+
+        <div class="content article"><!-- 内容开始 -->
+            <div class="content_wrapper det">
+                <div class="release-wrap question-wrap">
+                    <div class="que-main">
+                        <div class="release-title">
+                            <h2>{if $data|@count neq 0}编辑问题{else}发布问题{/if}</h2>
+                        </div>
+                        <div class="release-form">
+                            <div class="form-group rel-tle">
+                                <span class="needed">*</span>
+                                <div class="form-ipt-wrap">
+                                    <label for="que-title">问题</label>
+                                    <input type="text" id="que-title" class="rel-title que-title" value="{$data.title|default:''}" placeholder="请用一句话说明你的问题">
+                                    <p class="form-ipt-error"></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-ipt-wrap edit-area-de">
+                                    <label for="sup-edit">问题补充</label>
+                                    <textarea id="sup-edit" class="sup-edit" name="sup-edit" placeholder="(选填)">{$data.content|default:''}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group tag-selector">
+                                <span class="needed">*</span>
+                                <div class="tag-selector-wrap">
+                                    <p class="tip">问题标签，最多可选3个</p>
+                                    <div id="js-tags" class="tag-box">
+                                    {foreach $tag as $value}
+                                        <span class="for-choice {if $data|@count neq 0}{foreach $data.tag as $v}{if $v.tag_name eq $value.tag_name}active{/if}{/foreach}{/if}" tag-id="{$value.id}">{$value.tag_name}</span>
+                                    {foreachelse}
+                                    {/foreach}
+                                    </div>
+                                    <p class="form-ipt-error"></p>
+                                </div>
+                            </div>
+                            <div class="form-group form-bottom">
+                                <div class="form-ipt-wrap">
+                                    <button class="mainbtn btm-box" id="js-submit">{if $data|@count neq 0}提交{else}发布{/if}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="que-sidebar">
+                        <div class="que-attention">
+                            <div class="atten-body">
+                                <div class="atten-title">
+                                    <i class="iconfont icon-tishi"></i>
+                                    <h3>提问注意事项</h3>
+                                </div>
+                                <dl>
+                                    <dd>1、你是来解决问题的？请先去首页搜索是否已经有同类问题吧。这样你就省心少打字。</dd>
+                                    <dd>2、没找到是么？那就在发问题时精确描述你的问题，不要写与问题无关的内容哟~</dd>
+                                    <dt>问答禁止这些提问</dt>
+                                    <dd>1、禁止发布求职、交易、推广、广告类等与问答无关的信息，这些信息将被一律清理。</dd>
+                                    <dd>2、尽可能详细描述你的问题，如标题与内容不符，或与问答无关的信息将被删除。</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- 内容结束 -->
+        {include file='index/footer.html'}
+    </div>
+    {include file='index/signin.html'}
+    {include file='index/sidebar.html'}
+
+    {include file='index/script_js.html'}
+
+    <script src="static/js/write.js"></script>
+
+    <script type="text/javascript">
+        $(".rel-title").on("input propertychange", queErrorTip);
+        var old_tag = $("#js-tags .for-choice.active");
+        var old_tag_name = "";
+        old_tag_name = getSelectTag(old_tag,old_tag_name);
+
+        function getSelectTag(tag,tag_name){
+            tag.each(function(){
+                tag_name += $(this).text() + ",";
+            });
+            return (tag_name.substr(tag_name.length-1)==',')?tag_name.substr(0,tag_name.length-1):tag_name;
+        }
+
+        function queErrorTip(){
+            var title = $("#que-title").val();
+            if(title.replace(/\s+/g,"").length==0 || title.length<5){
+                tle_err.text("标题不能少于5个汉字！");
+                title_ipt.addClass("ipt-error");
+            }else if(title.length>50){
+                tle_err.text("标题不能超过50个单位长度！");
+                title_ipt.addClass("ipt-error");
+            }else{
+                tle_err.text("");
+                title_ipt.removeClass("ipt-error");
+                return true;
+            }
+        }
+
+        function yanzheng(){
+            var que_tle = $("#que-title").val(),
+                que_abs = $("#sup-edit").val(),
+                tag = $("#js-tags .for-choice.active"),
+                tags_len = tag.length,
+                tag_name = "";
+            tag_name = getSelectTag(tag,tag_name);
+
+            que_abs = (que_abs=="")?que_tle:que_abs;
+
+            if(queErrorTip()){
+                if(tags_len<1){
+                    tag_err.text("问题至少选择一个分类！");
+                }else{
+                    tag_err.text("");
+                    var timestamp = Date.parse(new Date());
+                    timestamp = timestamp/1000;
+                    var data = new Object();
+                    data.title = que_tle;
+                    data.content = que_abs;
+                    data.old_tag_name = old_tag_name;
+                    data.tag_name = tag_name;
+                    data.author = '{$indexauth.username}';
+                    data.create_at = timestamp;
+                    data.id = id?id:"";
+
+                    var url = "index.php?controller=index&method=wendasave";
+                    $.post(url, data, function(res){
+                        var jsonObj = JSON.parse(res);
+                        if(jsonObj.result=='0'){
+                            alert('操作失败！');
+                            window.location = "index.php?controller=index&method=wendanwrite";
+                        }
+                        if(jsonObj.result=='1'){
+                            alert('修改成功！');
+                            window.location = "index.php?controller=index&method=wenda&id="+jsonObj.update_id;
+                        }
+                        if(jsonObj.result=='2'){
+                            // alert('发表成功！');
+                            window.location = "index.php?controller=index&method=wendasavesuccess&id="+jsonObj.insert_id;
+                        }
+                    });
+                }
+            }
+        }
+
+        $("#js-submit").on("click",function(){
+            yanzheng();
+        });
+
+    </script>
+</body>
+</html>

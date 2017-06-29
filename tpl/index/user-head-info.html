@@ -1,0 +1,31 @@
+<div class="user-head-info">
+    <div class="user-info">
+        <h3 class="user-name">{$user_info.username}</h3>
+        <p class="user-desc">
+            {if $user_info.signature eq ''}
+            这位同学很懒，木有签名的说~
+            {else}
+            {$user_info.signature}
+            {/if}
+        </p>
+        <div class="study-info">
+            <div class="item follows">
+                <a href="index.php?controller=index&method=user&id={$user_info.id}&menu=follows">
+                    <em>{$user_info.follower_num}</em>
+                </a>
+                <span>关注</span>
+            </div>
+            <div class="item fans">
+                <a href="index.php?controller=index&method=user&id={$user_info.id}&menu=follows&sort=fans">
+                    <em>{$user_info.fans_num}</em>
+                </a>
+                <span>粉丝</span>
+            </div>
+        </div>
+        {if $indexauth neq '' and $indexauth.username eq $user_info.username}
+        <div class="set-btn">
+            <a href="index.php?controller=index&method=user&id={$user_info.id}&menu=setting">设置<i class="iconfont icon-shezhi"></i></a>
+        </div>
+        {/if}
+    </div>
+</div>

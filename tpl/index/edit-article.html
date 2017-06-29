@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>{if $data|@count neq 0}编辑文章{else}发表文章{/if} - 七院创新基地</title>
+    {include file='index/link_css.html'}
+</head>
+<body>
+    <div class="main-wrapper article">
+        <header><!-- 页头开始 -->
+            {include file='index/top-nav.html'}
+            <div id="banner">
+                <div class="banner-mask">
+                    <div class="inner">
+                        <h1 class="det">努力学习，勤奋工作，让青春更加光彩</h1>
+                    </div>
+                </div>
+            </div>
+        </header><!-- 页头结束 -->
+
+        <div class="content article"><!-- 内容开始 -->
+            <div class="content_wrapper det">
+                <div class="release-wrap article-wrap">
+                    <div class="release-title">
+                        <h2>{if $data|@count neq 0}编辑文章{else}发表文章{/if}</h2>
+                    </div>
+                    <div class="release-form article-form">
+                        <div class="form-group rel-tle art-tle">
+                            <span class="needed">*</span>
+                            <div class="form-ipt-wrap">
+                                <label for="art-title">文章标题</label>
+                                <input type="text" id="art-title" class="rel-title art-title" value="{$data.title|default:''}" placeholder="请输入标题，最多32个单位长度">
+                                <input type="radio" class="art-type" name="art-type" value="1" id="ori" {if $data|@count neq 0}{if $data.cat_name eq 1} checked="checked" {/if}{/if}><label for="ori">原创</label>
+                                <input type="radio" class="art-type" name="art-type" value="2" id="rep" {if $data|@count neq 0}{if $data.cat_name eq 2} checked="checked" {/if}{/if}><label for="rep">转载</label>
+                                <p class="form-ipt-error"></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <span class="needed">*</span>
+                            <div class="form-ipt-wrap edit-area">
+                                <label for="art-edit">文章内容</label>
+                                <textarea id="art-edit" class="art-edit" name="art-edit" placeholder="请输入文章内容">{$data.content|default:''}</textarea>
+                                <p class="form-ipt-error"></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-ipt-wrap edit-area-de">
+                                <label for="abs-edit">摘要：（默认自动提取您文章的前100字显示在博客首页作为文章摘要，您也可以在这里自行编辑）</label>
+                                <textarea id="abs-edit" class="de-edit" name="abs-edit" placeholder="(选填)">{$data.summary|default:''}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group tag-selector">
+                            <span class="needed">*</span>
+                            <div class="tag-selector-wrap">
+                                <p class="tip">文章标签，最多可选3个</p>
+                                <div id="js-tags" class="tag-box">
+                                {foreach $tag as $value}
+                                    <span class="for-choice {if $data|@count neq 0}{foreach $data.tag as $v}{if $v.tag_name eq $value.tag_name}active{/if}{/foreach}{/if}" tag-id="{$value.id}">{$value.tag_name}</span>
+                                {foreachelse}
+                                {/foreach}
+                                </div>
+                                <p class="form-ipt-error"></p>
+                            </div>
+                        </div>
+                        <div class="form-group form-bottom">
+                            <div class="form-ipt-wrap">
+                                <input type="hidden" name="id" value="{$data.id|default:''}">
+                                <button class="mainbtn btm-box" id="js-submit">{if $data|@count neq 0}提交{else}发布{/if}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- 内容结束 -->
+        {include file='index/footer.html'}
+    </div>
+    {include file='index/signin.html'}
+    {include file='index/sidebar.html'}
+
+    {include file='index/script_js.html'}
+
+    <script src="static/js/write.js"></script>
+
+    <script type="text/javascript">
+        var art_con_err = $(".edit-area .form-ipt-error");
+
+        $(".rel-title").on("input propertychange", artErrorTip);
+
+        function artErrorTip(){
+            var title = $("#art-title").val();
+            // content.replace(/\s+/g,"").length>0 && content.length>=10
+            if(title.replace(/\s+/g,"").length==0 || title.length<10){
+                tle_err.text("标题不能少于10个单位长度！");
+                title_ipt.addClass("ipt-error");
+            }else if(title.length>32){
+                tle_err.text("标题不能超过32个单位长度！");
+                title_ipt.addClass("ipt-error");
+            }else{
+                tle_err.text("");
+                title_ipt.removeClass("ipt-error");
+                return true;
+            }
+        }
+
+        function yanzheng(){
+            var art_tle = $("#art-title").val(),
+                art_type = $(".art-type:checked").val(),
+                art_con = $("#art-edit").val(),
+                art_con_len = art_con.length,
+                art_abs = $("#abs-edit").val(),
+                tag = $("#js-tags .for-choice.active"),
+                tags_len = tag.length,
+                tag_name = "";
+            tag_name = getSelectTag(tag,tag_name);
+
+            art_abs = (art_abs=="")?art_con.substr(0,180):art_abs.substr(0,180);
+
+            if(artErrorTip()){
+                if(art_type==null){
+                    tle_err.text("请选择一个文章类型!");
+                }else if(art_con_len<100){
+                    tle_err.text("");
+                    art_con_err.text("内容不能少于100个字！");
+                }else if(tags_len<1){
+                    art_con_err.text("");
+                    tag_err.text("文章至少选择一个分类！");
+                }else{
+                    art_con_err.text("");
+                    tag_err.text("");
+                    var data = new Object();
+                    data.title = art_tle;
+                    data.cat_name = art_type;
+                    data.content = art_con;
+                    data.summary = art_abs;
+                    data.old_tag_name = old_tag_name;
+                    data.tag_name = tag_name;
+                    data.author = '{$indexauth.username}';
+                    data.create_at = getTimestamp();
+                    data.id = id?id:"";
+                    var url = "index.php?controller=index&method=articlepublish";
+                    $.post(url, data, function(res){
+                        var jsonObj = JSON.parse(res);
+                        if(jsonObj.result=='0'){
+                            alert('操作失败！');
+                            window.location = "index.php?controller=index&method=articlewrite";
+                        }
+                        if(jsonObj.result=='1'){
+                            alert('修改成功！');
+                            window.location = "index.php?controller=index&method=article&id="+jsonObj.update_id;
+                        }
+                        if(jsonObj.result=='2'){
+                            // alert('发表成功！');
+                            window.location = "index.php?controller=index&method=articlesavesuccess&id="+jsonObj.insert_id;
+                        }
+                    });
+                }
+            }
+        }
+
+        $("#js-submit").on("click",function(){
+            yanzheng();
+        });
+
+    </script>
+</body>
+</html>

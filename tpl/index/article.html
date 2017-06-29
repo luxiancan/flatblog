@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>全部博文 - 七院创新基地</title>
+    {include file='index/link_css.html'}
+</head>
+<body>
+    <div class="main-wrapper article">
+        <header><!-- 页头开始 -->
+            {include file='index/top-nav.html'}
+            <div id="banner">
+                <div class="banner-mask">
+                    <div class="inner">
+                        <h1 class="det">能说算不上什么，有本事就把你的代码给我看看</h1>
+                    </div>
+                </div>
+            </div>
+        </header><!-- 页头结束 -->
+
+        <div class="content article"><!-- 内容开始 -->
+            <div class="content_wrapper det">
+                <div class="tabs_header">
+                    <h2>全部博文</h2>
+                    {if $indexauth neq ''}
+                    <a href="index.php?controller=index&method=articlewrite" class="mainbtn"><i class="iconfont icon-jia"></i>写新博文</a>
+                    {else}
+                    <a href="javascript:;" class="mainbtn js-lgn"><i class="iconfont icon-jia"></i>写新博文</a>
+                    {/if}
+                </div>
+                <div class="all_art">
+                    <div class="main">
+                        <div class="qsort">
+                            <div class="qsort-mode">
+                                <div class="quesall">
+                                    <h3 class="allques-title">{if $tag eq ''}全部分类{else}{$tag}{/if}
+                                        <span class="caret"></span>
+                                    </h3>
+                                    <div class="tag-nav cf">
+                                        <ul class="cf">
+                                            <li>
+                                                <div>
+                                                    <a href>移动开发</a>
+                                                    <i class="iconfont icon-you"></i>
+                                                    <div class="tag-nav-list">
+                                                        <ul>
+                                                            <li><a href>Android</a></li>
+                                                            <li><a href>iOS</a></li>
+                                                            <li><a href>Unity 3D</a></li>
+                                                            <li><a href>Cocos2d-x</a></li>
+                                                            <li><a href>游戏开发</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <a href>前端开发</a>
+                                                    <i class="iconfont icon-you"></i>
+                                                    <div class="tag-nav-list">
+                                                        <ul>
+                                                            <li><a href>HTML/CSS</a></li>
+                                                            <li><a href>JavaScript</a></li>
+                                                            <li><a href>jQuery</a></li>
+                                                            <li><a href>Bootstrap</a></li>
+                                                            <li><a href>Vue.js</a></li>
+                                                            <li><a href>WebApp</a></li>
+                                                            <li><a href>HTML5游戏</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <a href>后端开发</a>
+                                                    <i class="iconfont icon-you"></i>
+                                                    <div class="tag-nav-list">
+                                                        <ul>
+                                                            <li><a href>Java</a></li>
+                                                            <li><a href>C/C++</a></li>
+                                                            <li><a href>PHP</a></li>
+                                                            <li><a href>Node.js</a></li>
+                                                            <li><a href>JSP</a></li>
+                                                            <li><a href>ASP.NET</a></li>
+                                                            <li><a href>Ruby</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <a href>大数据</a>
+                                                    <i class="iconfont icon-you"></i>
+                                                    <div class="tag-nav-list">
+                                                        <ul>
+                                                            <li><a href>SAS</a></li>
+                                                            <li><a href>Python</a></li>
+                                                            <li><a href>R语言</a></li>
+                                                            <li><a href>Hadoop</a></li>
+                                                            <li><a href>Spark</a></li>
+                                                            <li><a href>云计算</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <a href>数据库</a>
+                                                    <i class="iconfont icon-you"></i>
+                                                    <div class="tag-nav-list">
+                                                        <ul>
+                                                            <li><a href>MySQL</a></li>
+                                                            <li><a href>SQL Server</a></li>
+                                                            <li><a href>Oracle</a></li>
+                                                            <li><a href>SQLite</a></li>
+                                                            <li><a href>DB2</a></li>
+                                                            <li><a href>MongoDB</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <a href>操作系统</a>
+                                                    <i class="iconfont icon-you"></i>
+                                                    <div class="tag-nav-list">
+                                                        <ul>
+
+                                                            <li><a href>Windows</a></li>
+                                                            <li><a href>Mac OS</a></li>
+                                                            <li><a href>Linux</a></li>
+                                                            <li><a href>运维/测试</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <a href>数据结构</a>
+                                                    <i class="iconfont icon-you"></i>
+                                                    <div class="tag-nav-list">
+                                                        <ul>
+                                                            <li><a href>数据结构</a></li>
+                                                            <li><a href>算法</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <a href>开发工具</a>
+                                                    <i class="iconfont icon-you"></i>
+                                                    <div class="tag-nav-list">
+                                                        <ul>
+                                                            <li><a href>Git/Github</a></li>
+                                                            <li><a href>Gulp</a></li>
+                                                            <li><a href>Grunt</a></li>
+                                                            <li><a href>VI</a></li>
+                                                            <li><a href>SVN</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="all">
+                                                <div>
+                                                    <a href>全部分类</a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="qsort-see js-qsort-see">
+                                <dl>
+                                    <dt>查看：</dt>
+                                    <dd><a href class="defalut">默认</a></dd>/
+                                    <dd><a href class="read_num js-see" data-see="read">阅读量</a></dd>/
+                                    <dd><a href class="praise_num js-see" data-see="praise">推荐数</a></dd>/
+                                    <dd><a href class="comment_num js-see" data-see="comment">评论数</a></dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="article_list">
+                            {foreach $article as $value name=name}
+                            <div class="article_item cf">
+                                <h2 class="article_title"><a href="index.php?controller=index&method=article&id={$value.id}">{$value.title}</a></h2>
+                                <div class="article_con">
+                                    <p class="article_abs">{$value.summary}</p>
+                                </div>
+                                <div class="article_info cf">
+                                    <span class="writer">
+                                        <a href="index.php?controller=index&method=user&id={$value.uid}">{$value.author}</a>
+                                    </span>
+                                    <span class="tags">
+                                        {foreach $value.tag as $tag}
+                                        <a href="index.php?controller=index&method=article&tag={$tag.tag_name}" class="tag">{$tag.tag_name}</a>
+                                        {/foreach}
+                                    </span>
+                                    <span class="time">{$value.create_at|date_format:'%Y-%m-%d %H:%M:%S'}</span>
+                                    <div class="article_bot">
+                                        <span class="read">阅读({$value.read_num})</span>
+                                        <span class="praise">推荐({$value.praise_num})</span>
+                                        <span class="comment">评论({$value.comment_num})</span>
+                                        <!-- <span class="share">分享</span> -->
+                                    </div>
+                                </div>
+                            </div>
+                            {foreachelse}
+                            <p class="no-content">暂无内容</p>
+                            {/foreach}
+                        </div>
+                        <div class="page-wrap">
+                            {$page_banner}
+                        </div>
+                    </div>
+                    <div class="sidebar">
+                        <div class="hot hot-art">
+                            <h4>精选推荐</h4>
+                            <ul>
+                                {foreach $article_praise as $value name=name}
+                                <li>
+                                    <a href="index.php?controller=index&method=article&id={$value.id}">{$value.title}</a>
+                                    <div class="show-box">
+                                        <span class="spacer">{$value.read_num}浏览</span>
+                                        <span class="spacer">{$value.praise_num}推荐</span>
+                                        <span class="spacer">{$value.comment_num}评论</span>
+                                    </div>
+                                </li>
+                                {foreachelse}
+                                <li>暂无推荐</li>
+                                {/foreach}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- 内容结束 -->
+        {include file='index/footer.html'}
+    </div>
+
+    {include file='index/signin.html'}
+    {include file='index/sidebar.html'}
+
+    {include file='index/script_js.html'}
+
+    <script type="text/javascript">
+        $(function(){
+            $(".tag-nav li a").attr("href",function(){
+                var text = $(this).text().replace(/\+/g, '%2B');
+                var href = "index.php?controller=index&method=article&tag=" + text;
+                return href;
+            });
+            $(".tag-nav li.all a").attr("href","index.php?controller=index&method=article");
+
+
+        })
+    </script>
+</body>
+</html>

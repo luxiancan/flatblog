@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>{$user_info.username}的博文 - 七院创新基地</title>
+    {include file='index/link_css.html'}
+    <link rel="stylesheet" href="static/css/user.css">
+</head>
+<body>
+    <div class="main-wrapper user">
+        <header><!-- 页头开始 -->
+            {include file='index/top-nav.html'}
+            {include file='index/user-head-info.html'}
+        </header><!-- 页头结束 -->
+        <div class="content"><!-- 内容开始 -->
+            <div class="main-wrap">
+                {include file='index/user-left-menu.html'}
+                <div class="u-container">
+                    <div id="articleMain" class="article-main">
+                        <ul class="toptab">
+                            <li class="active">
+                                <a href="index.php?controller=index&method=user&id={$user_info.id}&menu=articles">{if $indexauth neq '' and $indexauth.username eq $user_info.username}我{else}Ta{/if}的博文</a>
+                            </li>
+                            <li>
+                                <a href="index.php?controller=index&method=user&id={$user_info.id}&menu=articles&type=collect">{if $indexauth neq '' and $indexauth.username eq $user_info.username}我{else}Ta{/if}的收藏</a>
+                            </li>
+                            <li>
+                                <a href="index.php?controller=index&method=user&id={$user_info.id}&menu=articles&type=praise">{if $indexauth neq '' and $indexauth.username eq $user_info.username}我{else}Ta{/if}的推荐</a>
+                            </li>
+                            <li>
+                                <a href="index.php?controller=index&method=user&id={$user_info.id}&menu=articles&type=comment">{if $indexauth neq '' and $indexauth.username eq $user_info.username}我{else}Ta{/if}的评论</a>
+                            </li>
+                            {if $indexauth neq ''}
+                            <a href="index.php?controller=index&method=articlewrite" class="mainbtn wanna-build"><i class="iconfont icon-jia"></i>写博文</a>
+                            {else}
+                            <a href="javascript:;" class="mainbtn wanna-build js-lgn"><i class="iconfont icon-jia"></i>写博文</a>
+                            {/if}
+                        </ul>
+                        <div class="main-content">
+                            <div class="con-wrap">
+                                <div class="table-top cf">
+                                    {if $indexauth neq '' and $indexauth.username eq $user_info.username}
+                                    <div class="left-wrap">
+                                        <div class="mainbtn del-btn js-del-more">批量删除</div>
+                                    </div>
+                                    {/if}
+                                    <div class="right-wrap">
+                                        <span class="l">类型：</span>
+                                        <div class="type-select l">
+                                            <select id="sel-type">
+                                                <option value="0">全部分类</option>
+                                                <option value="1" {if $val eq 1} selected='selected' {/if}>原创</option>
+                                                <option value="2" {if $val eq 2} selected='selected' {/if}>转载</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <table id="lstBox" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <input type="checkbox" id="all-select">
+                                                <label for="all-select">编号</label>
+                                            </th>
+                                            <th class="title">标题</th>
+                                            <th>最后编辑时间</th>
+                                            <th>类型</th>
+                                            <th>阅读</th>
+                                            <th>评论</th>
+                                            {if $indexauth neq '' and $indexauth.username eq $user_info.username}
+                                            <th>操作</th>
+                                            {/if}
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {foreach $article_data as $value name=name}
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" class="check" id="{$value.id}">
+                                                <label for="{$value.id}" class="label">{$smarty.foreach.name.iteration}</label>
+                                            </td>
+                                            <td class="title">
+                                                <a href="index.php?controller=index&method=article&id={$value.id}">{$value.title}</a>
+
+                                            </td>
+                                            <td>{$value.update_at|date_format:'%Y-%m-%d %H:%M:%S'}</td>
+                                            <td>{if $value.cat_name eq 1}原创{else}转载{/if}</td>
+                                            <td>{$value.read_num}</td>
+                                            <td>{$value.comment_num}</td>
+                                            {if $indexauth neq '' and $indexauth.username eq $user_info.username}
+                                            <td>
+                                                <a href="index.php?controller=index&method=articlewrite&id={$value.id}">编辑</a> |
+                                                <a href="javascript:;" class="js-del" data-id="{$value.id}">删除</a>
+                                            </td>
+                                            {/if}
+                                        </tr>
+                                        {foreachelse}
+                                        <tr>
+                                            <td>暂无内容</td>
+                                        </tr>
+                                        {/foreach}
+                                    </tbody>
+                                </table>
+                                {if $count > $homepagesize}
+                                <div class="page-wrap">
+                                    {$page_banner}
+                                </div>
+                                {/if}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- 内容结束 -->
+        {include file='index/footer.html'}
+    </div>
+    {include file='index/signin.html'}
+    {include file='index/sidebar.html'}
+
+    {include file='index/script_js.html'}
+    <script src="static/js/user.main.js"></script>
+    {if $indexauth neq ''}
+    <script src="static/js/user.follow.js"></script>
+    {/if}
+    <script type="text/javascript">
+        $(function(){
+
+            $("#sel-type").on("change",function(){
+                var value = $(this).children('option:selected').val();
+                if(value==1 || value==2){
+                    window.location = "index.php?controller=index&method=user&id={$user_info.id}&menu=articles&value="+value;
+                }else{
+                    window.location = "index.php?controller=index&method=user&id={$user_info.id}&menu=articles";
+                }
+            });
+
+            {if $indexauth neq ''}
+            var uid = Number($("#nav .user").attr("data-uid"));
+
+
+            $(".js-del").on("click",function(){
+                if(confirm('确认删除这条数据吗？删除后不可恢复！')){
+                    var data_id = $(this).attr("data-id");
+                    var url = "index.php?controller=index&method=ajaxdelarticle";
+                    var data = new Object();
+                    data.uid = uid;
+                    data.id = data_id;
+                    data.do = "del_one";
+                    $.post(url, data, function(res){
+                        // res = $.parseJSON(res);
+                        switch(res){
+                            case 'success':
+                                alert("删除成功！");
+                                location.reload(true);
+                                break;
+                            case 'fail':
+                                alert("删除失败！");
+                                location.reload(true);
+                                break;
+                        }
+                    });
+                }
+            });
+
+            $(".js-del-more").on("click",function(){
+                var idStr = "";
+                $("#lstBox .check:checked").each(function(){
+                    idStr += $(this).attr("id") + ',';
+                });
+                idStr = idStr.substr(0,idStr.length-1);
+                if(idStr.length>0){
+                    if(confirm("确认删除这些数据吗？删除后不可恢复！")){
+                        var url = "index.php?controller=index&method=ajaxdelarticlemore";
+                        var data = new Object();
+                        data.uid = uid;
+                        data.id = idStr;
+                        data.do = "del_more";
+                        $.post(url, data, function(res){
+                            switch(res){
+                                case 'success':
+                                    alert("删除多条数据成功！");
+                                    location.reload(true);
+                                    break;
+                                case 'fail':
+                                    alert("删除失败！");
+                                    location.reload(true);
+                                    break;
+                            }
+                        });
+                    }
+                }else{
+                    alert("请选择需要删除的数据！");
+                }
+            });
+
+            {/if}
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>{$keyword}_搜索 - 七院创新基地</title>
+    {include file='index/link_css.html'}
+</head>
+<body>
+    <div class="main-wrapper nobg">
+        <!-- 页头开始 -->
+        <header>
+            {include file='index/top-nav.html'}
+        </header>
+        <!-- 页头结束 -->
+        <!-- 内容开始 -->
+        <div class="content search">
+            <div class="search-main">
+                <div class="search-header">
+                    <div class="serach-box">
+                        <i class="iconfont icon-sousuo_sousuo"></i>
+                        <input type="text" class="serach-box-ipt js-serach-ipt" id="js-serach-ipt" value="{$keyword}" placeholder="请输入想要搜索的内容">
+                        <span class="serach-box-btn js-serach-btn">搜索</span>
+                    </div>
+                </div>
+                <div class="serach-body">
+                    <div class="search-nav-wrap">
+                        <ul class="search-nav" id="js-search-nav">
+                            <li><a href="javascript:;" data-page="index">全站</a></li>
+                            <li><a href="javascript:;" data-page="article" class="active">博文</a></li>
+                            <li><a href="javascript:;" data-page="wenda">问答</a></li>
+                        </ul>
+                    </div>
+                    <div class="search-related">共找到{$count}个相关内容</div>
+                    {if $keyword neq ''}
+                    {if $count neq 0}
+                        {foreach $article_data as $value name=name}
+                        <div class="article-item">
+                            <div class="article-item-title">
+                                <a href="index.php?controller=index&method=article&id={$value.id}" target="_blank">{$value.title}</a>
+                            </div>
+                            <div class="content-wrap">
+                                <p class="content">{$value.summary}</p>
+                            </div>
+                        </div>
+                        {foreachelse}
+                        {/foreach}
+                        {if $count > $pagesize}
+                        <div class="page-wrap">
+                        {$page_banner}
+                        </div>
+                        {/if}
+                    {else}
+                    <p class="notdata">没有与 “{$keyword}” 相关的搜索结果</p>
+                    {/if}
+                    {else}
+                    <p class="notdata">请在输入框搜索想搜索的内容</p>
+                    {/if}
+                </div>
+            </div>
+        </div>
+        <!-- 内容结束 -->
+        {include file='index/footer.html'}
+    </div>
+    {include file='index/signin.html'}
+    {include file='index/sidebar.html'}
+
+    {include file='index/script_js.html'}
+    <script src="static/js/search.js"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>{$user_info.username}的问答 - 七院创新基地</title>
+    {include file='index/link_css.html'}
+    <link rel="stylesheet" href="static/css/user.css">
+</head>
+<body>
+    <div class="main-wrapper user">
+        <header><!-- 页头开始 -->
+            {include file='index/top-nav.html'}
+            {include file='index/user-head-info.html'}
+        </header><!-- 页头结束 -->
+        <div class="content"><!-- 内容开始 -->
+            <div class="main-wrap">
+                {include file='index/user-left-menu.html'}
+                <div class="u-container">
+                    <div id="articleMain" class="article-main">
+                        <ul class="toptab">
+                            <li>
+                                <a href="index.php?controller=index&method=user&id={$user_info.id}&menu=bbs">{if $indexauth neq '' and $indexauth.username eq $user_info.username}我{else}Ta{/if}的提问</a>
+                            </li>
+                            <li class="active">
+                                <a href="index.php?controller=index&method=user&id={$user_info.id}&menu=bbs&sort=reply">{if $indexauth neq '' and $indexauth.username eq $user_info.username}我{else}Ta{/if}的回答</a>
+                            </li>
+                            <li>
+                                <a href="index.php?controller=index&method=user&id={$user_info.id}&menu=bbs&sort=follow">{if $indexauth neq '' and $indexauth.username eq $user_info.username}我{else}Ta{/if}的关注</a>
+                            </li>
+                            {if $indexauth neq ''}
+                            <a href="index.php?controller=index&method=wendawrite" class="mainbtn wanna-build"><i class="iconfont icon-jia"></i>我要提问</a>
+                            {else}
+                            <a href="javascript:;" class="mainbtn wanna-build js-lgn"><i class="iconfont icon-jia"></i>我要提问</a>
+                            {/if}
+                        </ul>
+                        <div class="main-content">
+                            <div class="con-wrap">
+                                {if $answer_data|@count neq 0}
+                                <div class="ques-list">
+                                    {foreach $answer_data as $value name=name}
+                                    <div class="ques-answer-item">
+                                        <span class="share js-share" data-shareid="">
+                                            分享<i class="iconfont icon-fenxiang" data-shareid=""></i>
+                                            <div class="shareWrapBox">
+                                                <div class="share-box-con" data-ques-id="" data-bd-bind="">
+                                                    <a href="#" class="link" data-cmd="weixin" title="分享到微信"><i class="iconfont icon-weixin"></i></a>
+                                                    <a href="#" class="link" data-cmd="weibo" title="分享到微博"><i class="iconfont icon-weibo"></i></a>
+                                                    <a href="#" class="link" data-cmd="qzone" title="分享到QQ空间"><i class="iconfont icon-qq"></i></a>
+                                                </div>
+                                            </div>
+                                        </span>
+                                        <div class="from-tag">来自
+                                            {foreach $value.tag as $tag}
+                                            <a href="index.php?controller=index&method=wenda&tag={$tag.tag_name}" target="_blank">{$tag.tag_name}</a>
+                                            {/foreach}
+                                        </div>
+                                        <div class="ques-con">
+                                            <a href="index.php?controller=index&method=wenda&id={$value.id}" class="ques-con-content" target="_blank">{$value.title}</a>
+                                        </div>
+                                        <div class="answer-con" data-answer-id="2">
+                                            <div class="user">我的回答</div>
+                                            <div class="answer-content">
+                                                <a href="index.php?controller=index&method=wenda&id={$value.id}" target="_blank">{$value.answer.content}</a>
+                                            </div>
+                                        </div>
+                                        <div class="about-info">
+                                            <span class="time">{$value.answer.answer_at|date_format:'%Y-%m-%d %H:%M:%S'}</span>
+                                            <a href="index.php?controller=index&method=wenda&id={$value.id}" class="reply-num" target="_blank">{$value.answer_num}个回答</a>
+                                        </div>
+                                    </div>
+                                    {/foreach}
+                                </div>
+                                {if $count > $pagesize}
+                                <div class="page-wrap">{$page_banner}</div>
+                                {/if}
+                                {else}
+                                <p class="notattend">
+                                {if $indexauth neq '' and $indexauth.username eq $user_info.username}你还没有任何回答，可以先<a href="index.php?controller=index&method=wenda" target="_blank" class="fontred">去看看技术问答</a>
+                                {else}
+                                Ta还没有任何回答
+                                {/if}
+                                </p>
+                                {/if}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- 内容结束 -->
+        {include file='index/footer.html'}
+    </div>
+    {include file='index/signin.html'}
+    {include file='index/sidebar.html'}
+
+    {include file='index/script_js.html'}
+    <script src="static/js/user.main.js"></script>
+    {if $indexauth neq ''}
+    <script src="static/js/user.follow.js"></script>
+    {/if}
+</body>
+</html>

@@ -1,0 +1,73 @@
+<div class="slider">
+    <div class="user-pic">
+        <div class="user-pic-wrap">
+            <img class="img" src="./static/img/head_img/{$user_info.avatar|default:'default_avatar.jpg'}">
+        </div>
+        {if $indexauth neq ''}
+        {if $indexauth.id neq $user_info.id}
+        <div class="follow-wrap already-follow hide js-already-follow" data-uid="{$user_info.id}" data-type="{$user_info.relation_type}">
+            <i class="iconfont icon-guanzhu1"></i>
+            <div class="u-info-tips u-info-followed-tips">
+                <span class="title">已成功关注Ta</span>
+                <p class="content">关注后可及时了解Ta的动态信息</p>
+                <a href="javascript:;" class="cancel-follow js-cancel-follow">取消关注</a>
+                <div class="drop_up_wrap">
+                    <i class="icon-drop_up icon-drop-followed_up"></i>
+                </div>
+            </div>
+        </div>
+        <div class="follow-wrap add-follow js-add-follow" data-uid="{$user_info.id}" data-type="{$user_info.relation_type}">
+            <i class="iconfont icon-guanzhu1"></i>
+            <div class="u-info-tips u-info-follow-tips">
+                <span class="title">关注Ta</span>
+                <p class="content">关注后可及时了解Ta的动态信息</p>
+                <div class="drop_up_wrap">
+                    <i class="icon-drop_up icon-drop-follow_up"></i>
+                </div>
+            </div>
+        </div>
+        {/if}
+        {else}
+        <div class="follow-wrap add-follow js-lgn" data-uid="{$user_info.id}" data-type="{$user_info.relation_type}">
+            <i class="iconfont icon-guanzhu1"></i>
+            <div class="u-info-tips u-info-follow-tips">
+                <span class="title">关注Ta</span>
+                <p class="content">关注后可及时了解Ta的动态信息</p>
+                <div class="drop_up_wrap">
+                    <i class="icon-drop_up icon-drop-follow_up"></i>
+                </div>
+            </div>
+        </div>
+        {/if}
+    </div>
+    <ul>
+        <li>
+            <a href="index.php?controller=index&method=user&id={$user_info.id}">
+                <i class="iconfont icon-shouye"></i>
+                <span>主页</span>
+                <i class="iconfont icon-right"></i>
+            </a>
+        </li>
+        <li>
+            <a href="index.php?controller=index&method=user&id={$user_info.id}&menu=articles">
+                <i class="iconfont icon-wenzhang"></i>
+                <span>博文</span>
+                <i class="iconfont icon-right"></i>
+            </a>
+        </li>
+        <li>
+            <a href="index.php?controller=index&method=user&id={$user_info.id}&menu=bbs">
+                <i class="iconfont icon-wenti"></i>
+                <span>问答</span>
+                <i class="iconfont icon-right"></i>
+            </a>
+        </li>
+        <li>
+            <a href="index.php?controller=index&method=user&id={$user_info.id}&menu=follows">
+                <i class="iconfont icon-guanzhu"></i>
+                <span>关注</span>
+                <i class="iconfont icon-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>

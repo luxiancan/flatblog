@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="UTF-8" />
+    <title>问题发布成功 - 七院创新基地</title>
+    {include file='index/link_css.html'}
+</head>
+<body class="save">
+    <div class="main-wrapper nobg">
+        <header><!-- 页头开始 -->
+            {include file='index/top-nav.html'}
+        </header><!-- 页头结束 -->
+
+        <div class="content wrap"><!-- 内容开始 -->
+            <div class="content_wrapper">
+                <div class="bbs">
+                    <div class="successpage">
+                        <h2>问题发布成功</h2>
+                        <div class="send">
+                            <span class="send-success">
+                                <i class="iconfont icon-chenggong"></i>
+                            </span>
+                            <h3>你的问题已经提交成功</h3>
+                            <p>请耐心等待，肯定会有很多热心的同学回答你的问题</p>
+                            <p>
+                                <a href="index.php?controller=index&method=wenda" class="btn mainbtn">返回技术问答</a>
+                            </p>
+                            <p>
+                                <a class="look">查看我提的问题</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- 内容结束 -->
+        {include file='index/footer.html'}
+    </div>
+    {include file='index/sidebar.html'}
+
+    {include file='index/script_js.html'}
+    <script type="text/javascript">
+        $(".send .look").attr("href","index.php?controller=index&method=wenda&id="+id);
+    </script>
+</body>
+</html>

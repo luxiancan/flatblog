@@ -1,0 +1,19 @@
+<div class="mask"></div>
+    <div id="sidebar">
+        <ul>
+            <li><a href="index.php">首页</a></li>
+            {if $indexauth neq ''}
+            <li><a href="index.php?controller=index&method=user&id={$indexauth.id}">个人主页</a></li>
+            <li><a href="index.php?controller=index&method=articlewrite">写新博文</a></li>
+            <li><a href="index.php?controller=index&method=wendawrite">发布问题</a></li>
+            <li><a href="index.php?controller=index&method=logout">退出登录</a></li>
+            {else}
+            <li><a href="jacascript:;" class="js-lgn">个人主页</a></li>
+            <li><a href="javascript:;" class="js-lgn">写新博文</a></li>
+            <li><a href="javascript:;" class="js-lgn">发布问题</a></li>
+            <li><a href="javascript:;">退出登录</a></li>
+            {/if}
+        </ul>
+        <a href="#sidebar" class="close_sidebar"></a>
+    </div>
+    <a class="back-to-top mainbtn">顶部</a>

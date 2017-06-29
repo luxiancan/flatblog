@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>{$user_info.username}的粉丝 - 七院创新基地</title>
+    {include file='index/link_css.html'}
+    <link rel="stylesheet" href="static/css/user.css">
+</head>
+<body>
+    <div class="main-wrapper user">
+        <header><!-- 页头开始 -->
+            {include file='index/top-nav.html'}
+            {include file='index/user-head-info.html'}
+        </header><!-- 页头结束 -->
+        <div class="content"><!-- 内容开始 -->
+            <div class="main-wrap">
+                {include file='index/user-left-menu.html'}
+                <div class="u-container">
+                    <div id="articleMain" class="article-main">
+                        <ul class="toptab">
+                            <li>
+                                <a href="index.php?controller=index&method=user&id={$user_info.id}&menu=follows">{if $indexauth neq '' and $indexauth.username eq $user_info.username}我{else}Ta{/if}的关注</a>
+                            </li>
+                            <li class="active">
+                                <a href="index.php?controller=index&method=user&id={$user_info.id}&menu=follows&sort=fans">{if $indexauth neq '' and $indexauth.username eq $user_info.username}我{else}Ta{/if}的粉丝</a>
+                            </li>
+                        </ul>
+                        <div class="main-content">
+                            <div class="con-wrap">
+                                {if $user_info.fans_num neq 0}
+                                <div class="concern-list js-fans-list">
+                                    <ul>
+                                        {foreach $fans_data as $value name=name}
+                                        <li class="box">
+                                            <div class="left-img">
+                                                <a href="index.php?controller=index&method=user&id={$value.id}" target="_blank">
+                                                    <img src="./static/img/head_img/{$value.avatar|default:'default_avatar.jpg'}" class="top_head">
+                                                </a>
+                                            </div>
+                                            <div class="right-c">
+                                                <div class="title">
+                                                    <a href="index.php?controller=index&method=user&id={$value.id}" class="nickname" target="_blank">{$value.username}</a>
+                                                </div>
+                                                <p class="desc" title="">{$value.job}</p>
+                                                <div class="fs-line">
+                                                    <a href="index.php?controller=index&method=user&id={$value.id}&menu=follows" class="u-target">
+                                                        <span class="group">
+                                                            <em>关注</em>
+                                                            <em class="u-margin-l-4">{$value.follower_num}</em>
+                                                        </span>
+                                                    </a>
+                                                    <a href="index.php?controller=index&method=user&id={$value.id}&menu=follows&sort=fans" class="u-target">
+                                                        <span class="group">
+                                                            <em>粉丝</em>
+                                                            <em class="u-margin-l-4">{$value.fans_num}</em>
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                                <div class="btn-line js-btn-line" data-is-fans="{$value.is_fans}"  data-is-concern="{$value.is_concern}">
+                                                    {if $indexauth neq ''}
+                                                    {if $indexauth.id neq $value.id}
+                                                    <a href="javascript:" data-uid="{$value.id}" class="btn-o btn-gray hide js-concern-mutual">互相关注</a>
+                                                    <a href="javascript:" data-uid="{$value.id}" class="btn-o btn-gray hide js-concern-already">已关注</a>
+                                                    <a href="javascript:" data-uid="{$value.id}" class="btn-o btn-green hide js-concern-follow">关注</a>
+                                                    <!-- <a href="javascript:" target="_blank" class="btn-o btn-gray hide js-concern-msg">私信</a> -->
+                                                    {/if}
+                                                    {else}
+                                                    <a href="javascript:" class="btn-o btn-green js-lgn">关注</a>
+                                                    {/if}
+                                                </div>
+                                            </div>
+                                        </li>
+                                        {/foreach}
+                                    </ul>
+                                </div>
+                                {if $count > $follower_pagesize}
+                                <div class="page-wrap">{$page_banner}</div>
+                                {/if}
+                                {else}
+                                <p class="notattend">
+                                {if $indexauth neq '' and $indexauth.id eq $user_info.id}你还没有任何粉丝，快去<a href="index.php?controller=index&method=articlewrite" target="_blank" class="fontblue">发表博文</a>获取更多关注吧~
+                                {else}
+                                Ta还没有任何粉丝
+                                {/if}
+                                </p>
+                                {/if}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- 内容结束 -->
+        {include file='index/footer.html'}
+    </div>
+    {include file='index/signin.html'}
+    {include file='index/sidebar.html'}
+
+    {include file='index/script_js.html'}
+    <script src="static/js/user.main.js"></script>
+    {if $indexauth neq ''}
+    <script src="static/js/user.follow.js"></script>
+    {/if}
+</body>
+</html>
