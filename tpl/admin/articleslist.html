@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>博客后台管理系统</title>
+    {include file='admin/link_css.html'}
+    <script type="text/javascript">
+        const aname = "articles";
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        {include file='admin/top-navbar.html'}
+        <div class="main">
+            {include file='admin/left-nav.html'}
+            <section class="content-wrap">
+                <section class="content">
+                    <div class="article" id="article">
+                        <div class="sub-nav">
+                            <ol class="breadcrumb">
+                                <li><a href="admin.php?controller=admin&method=index">首页</a></li>
+                                <li class="active">文章管理</li>
+                            </ol>
+                        </div>
+                        <div class="details">
+                            <div class="details_operation">
+                                <div class="left-wrap">
+                                    <div class="btn btn-comment" id="all-del" onclick="delAll(aname)">批量删除</div>
+                                </div>
+                                <div class="right-wrap">
+                                    <div class="status-wrap">
+                                        <span class="fl">状态：</span>
+                                        <div class="status-select">
+                                            <select name id="select" class="select" onchange="selectStatus(this,aname)">
+                                                <option value="0">全部</option>
+                                                <option value="1" class="select-item" {if $val eq 1} selected='selected' {/if}>有效</option>
+                                                <option value="2" class="select-item" {if $val eq 2} selected='selected' {/if}>无效</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="input-group search">
+                                        <input type="text" class="form-control" name="key" placeholder="文章标题">
+                                        <span class="input-group-btn">
+                                            <a class="btn btn-comment" onclick="searchContent(aname)">搜索</a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="main-con">
+                                <div class="table-wrap">
+                                    <table class="table" cellspacing="0" cellpadding="0">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <input type="checkbox" id="all-select">
+                                                    <label for="all-select" class="label">编号</label>
+                                                </th>
+                                                <th>id</th>
+                                                <th class="title">标题</th>
+                                                <th>标签</th>
+                                                <th>作者</th>
+                                                <th>发布时间</th>
+                                                <th>浏览</th>
+                                                <th>状态</th>
+                                                <th>操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {foreach $data as $value name=name}
+                                            <tr>
+                                                <td>
+                                                    <input type="checkbox" class="check" id="{$value.id}">
+                                                    <label for="{$value.id}" class="label">{$smarty.foreach.name.iteration}</label>
+                                                </td>
+                                                <td>{$value.id}</td>
+                                                <td class="title">
+                                                    <a href="index.php?controller=index&method=article&id={$value.id}">{$value.title}</a>
+                                                </td>
+                                                <td>{$value.tag_name}</td>
+                                                <td>{$value.author}</td>
+                                                <td>{$value.create_at|date_format:'%Y-%m-%d %H:%M:%S'}</td>
+                                                <td>{$value.read_num}</td>
+                                                <td>{if $value.status eq 1}有效{else}无效{/if}</td>
+                                                <td>
+                                                    <a href="admin.php?controller=admin&method=articlesrevise&id={$value.id}">修改</a>
+                                                    <a onclick="delOne({$value.id},aname)">删除</a>
+                                                </td>
+                                            </tr>
+                                        {foreachelse}
+                                            <tr>
+                                                <td>暂无文章</td>
+                                            </tr>
+                                        {/foreach}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                {$page_banner}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </div>
+    </div>
+    {include file='admin/script_js.html'}
+</body>
+</html>

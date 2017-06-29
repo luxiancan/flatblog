@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>博客后台管理系统</title>
+    {include file='admin/link_css.html'}
+    <script type="text/javascript">
+        const tname = "tags";
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        {include file='admin/top-navbar.html'}
+        <div class="main">
+            {include file='admin/left-nav.html'}
+            <section class="content-wrap">
+                <section class="content">
+                    <div class="tags" id="tags">
+                        <div class="sub-nav">
+                            <ol class="breadcrumb">
+                                <li><a href="admin.php?controller=admin&method=index">首页</a></li>
+                                <li class="active">标签管理</li>
+                            </ol>
+                        </div>
+                        <div class="details">
+                            <div class="details_operation">
+                                <div class="left-wrap">
+                                    <div class="btn btn-comment" id="all-del" onclick="delAll(tname)">批量删除</div>
+                                    <a class="btn btn-comment" href="admin.php?controller=admin&method=tagsrevise">添加</a>
+                                </div>
+                                <div class="right-wrap">
+                                    <div class="input-group search">
+                                        <input type="text" class="form-control" name="key" placeholder="标签名称">
+                                        <span class="input-group-btn">
+                                            <a class="btn btn-comment" onclick="searchContent(tname)">搜索</a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="main-con">
+                                <div class="table-wrap">
+                                    <table class="table" cellspacing="0" cellpadding="0">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <input type="checkbox" id="all-select">
+                                                    <label for="all-select" class="label">编号</label>
+                                                </th>
+                                                <th>id</th>
+                                                <th>标签所属分类</th>
+                                                <th>标签名称</th>
+                                                <th>关联文章数</th>
+                                                <th>关联问题数</th>
+                                                <th>最后修改时间</th>
+                                                <th>操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {foreach $data as $value name=name}
+                                            <tr>
+                                                <td>
+                                                    <input type="checkbox" class="check" id="{$value.id}">
+                                                    <label for="{$value.id}" class="label">{$smarty.foreach.name.iteration}</label>
+                                                </td>
+                                                <td>{$value.id}</td>
+                                                <td>{$value.class_name}</td>
+                                                <td>
+                                                    <a href="#">{$value.tag_name}</a>
+                                                </td>
+                                                <td>{$value.art_num}</td>
+                                                <td>{$value.que_num}</td>
+                                                <td>{$value.create_at|date_format:'%Y-%m-%d %H:%M:%S'}</td>
+                                                <td>
+                                                    <a href="admin.php?controller=admin&method=tagsrevise&id={$value.id}">修改</a>
+                                                    <a onclick="delOne({$value.id},tname)">删除</a>
+                                                </td>
+                                            </tr>
+                                        {foreachelse}
+                                            <tr>
+                                                <td>暂无标签</td>
+                                            </tr>
+                                        {/foreach}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                {$page_banner}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </div>
+    </div>
+    {include file='admin/script_js.html'}
+</body>
+</html>

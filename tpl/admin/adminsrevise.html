@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>博客后台管理系统</title>
+    {include file='admin/link_css.html'}
+</head>
+<body>
+    <div class="wrapper">
+        {include file='admin/top-navbar.html'}
+        <div class="main">
+            {include file='admin/left-nav.html'}
+            <section class="content-wrap">
+                <section class="content">
+                    <div class="admins" id="admins">
+                        <div class="sub-nav">
+                            <ol class="breadcrumb">
+                                <li><a href="admin.php?controller=admin&method=index">首页</a></li>
+                                <li><a href="admin.php?controller=admin&method=adminslist">管理员管理</a></li>
+                                <li class="active">管理员修改</li>
+                            </ol>
+                        </div>
+                        <div class="revise">
+                            <p class="desc">管理员可以添加添加更多的管理员，或者修改自己的个人信息</p>
+                            <form action="admin.php?controller=admin&method=adminsrevise" method="post" class="revise-form" autocomplete="off" onsubmit="{if $data|@count neq 0} return reviseSubmit() {else} return addSubmit() {/if}">
+                                <div class="ipt-group">
+                                    <span class="title">用户名：</span>
+                                    <div class="ipt-item">
+                                        <input class="ipt" type="text" name="username" id="username" value="{$data.username|default:''}">
+                                        <p class="error-tip" error-hint="请输入正确的用户名"></p>
+                                    </div>
+                                </div>
+                                <div class="ipt-group">
+                                    <span class="title">密码：</span>
+                                    <div class="ipt-item">
+                                        <input class="ipt" type="password" name="password" id="password" value="">
+                                        <p class="error-tip" error-hint="请输入正确的密码"></p>
+                                    </div>
+                                </div>
+                                <!-- 修改操作 -->
+                                {if $data|@count neq 0}
+                                <div class="ipt-group">
+                                    <span class="title">新密码：</span>
+                                    <div class="ipt-item">
+                                        <input class="ipt" type="password" name="newpwd" id="newpwd" value="">
+                                        <p class="error-tip" error-hint="请输入正确的密码"></p>
+                                    </div>
+                                </div>
+                                <div class="ipt-group">
+                                    <span class="title">再次输入新密码：</span>
+                                    <div class="ipt-item">
+                                        <input class="ipt" type="password" name="newpwdRepeat" id="newpwdRepeat" value="">
+                                        <p class="error-tip" error-hint="请输入正确的密码"></p>
+                                    </div>
+                                </div>
+                                <!-- 添加操作 -->
+                                {else}
+                                <div class="ipt-group">
+                                    <span class="title">再次确认密码：</span>
+                                    <div class="ipt-item">
+                                        <input class="ipt" type="password" name="pwdRepeat" id="pwdRepeat" value="">
+                                        <p class="error-tip" error-hint="请输入正确的密码"></p>
+                                    </div>
+                                </div>
+                                {/if}
+                                <div class="ipt-group">
+                                    <span class="title">邮箱：</span>
+                                    <div class="ipt-item">
+                                        <input class="ipt" type="email" name="email" id="email" value="{$data.email|default:''}">
+                                        <p class="error-tip" error-hint="请输入正确的邮箱"></p>
+                                    </div>
+                                </div>
+                                <div class="ipt-btm">
+                                    <input type="hidden" name="id" value="{$data.id|default:''}">
+                                    <input type="submit" class="btn btn-comment" id="submit" value="提交">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </div>
+    </div>
+    {include file='admin/script_js.html'}
+    <script type="text/javascript">
+        $("#username").blur(function(){
+            regName($(this));
+        });
+        $("#password").blur(function(){
+            regPassword($(this));
+        });
+        $("#pwdRepeat").blur(function(){
+            regPwdRepeat($(this),$("#password"));
+        });
+        $("#newpwd").blur(function(){
+            regPassword($(this));
+        });
+        $("#newpwdRepeat").blur(function(){
+            regPwdRepeat($(this),$("#newpwd"));
+        });
+        $("#email").blur(function(){
+            regEmail($(this));
+        });
+
+        function addSubmit(){
+            if(regName($("#username"))){
+                if(regPassword($("#password"))){
+                    if(regPwdRepeat($("#pwdRepeat"),$("#password"))){
+                        if(regEmail($("#email"))){
+                            return true;
+                        }else{
+                            return false;
+                        }
+                    }else{ return false; }
+                }else{ return false; }
+            }else{ return false; }
+        }
+
+        function reviseSubmit(){
+            if(regName($("#username"))){
+                if(regPassword($("#password"))){
+                    if(regPassword($("#newpwd"))){
+                        if(regPwdRepeat($("#newpwdRepeat"),$("#newpwd"))){
+                            if(regEmail($("#email"))){
+                                return true;
+                                // return pwdSubmit();
+                            }else{
+                                return false;
+                            }
+                        }else{ return false; }
+                    }else{ return false; }
+                }else{ return false; }
+            }else{ return false; }
+        }
+
+        function pwdSubmit(){
+            var url = "admin.php?controller=admin&method=adminsrevise";
+            var data = new Object();
+            data.password = $("#password").val();
+            $.post(url ,data, function(res){
+                alert(res);
+            });
+            return false;
+        }
+
+    </script>
+</body>
+</html>
