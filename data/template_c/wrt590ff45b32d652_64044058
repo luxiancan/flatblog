@@ -1,0 +1,281 @@
+<?php
+/* Smarty version 3.1.31, created on 2017-05-08 12:30:19
+  from "C:\xampp\htdocs\flatBlog\tpl\index\blog-index.html" */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.31',
+  'unifunc' => 'content_590ff45b325958_96999303',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '4c3a69207fa96ccd1c38665998bc20b790727208' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\flatBlog\\tpl\\index\\blog-index.html',
+      1 => 1494217817,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:index/link_css.html' => 1,
+    'file:index/script_js.html' => 1,
+  ),
+),false)) {
+function content_590ff45b325958_96999303 (Smarty_Internal_Template $_smarty_tpl) {
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>七院创新基地 - 博文</title>
+    <?php $_smarty_tpl->_subTemplateRender('file:index/link_css.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
+</head>
+<body>
+    <div class="main-wrapper index">
+        <header><!-- 页头开始 -->
+            <nav id="nav" class="alt">
+                <div class="logo">
+                    <a data-toggle="modal" data-target="#signin" id="js-signin-btn">登录</a>
+                    <a data-toggle="modal" data-target="#signin" id="js-signup-btn">注册</a>
+                    <a href=""><?php echo $_smarty_tpl->tpl_vars['indexauth']->value['username'];?>
+</a>
+                </div>
+                <ul class="menu">
+                    <li><a href="blog-index.html" class="active">首页</a></li>
+                    <li><a href="all-article.html">全部博文</a></li>
+                    <li><a href="wenda.html">技术问答</a></li>
+                    <li id="sidebar_trigger"><a href="#sidebar">菜单</a></li>
+                </ul>
+            </nav>
+            <div id="banner">
+                <div class="inner">
+                    <h1>七院创新基地 - 博文</h1>
+                    <p class="sub-heading">优秀博文，你我共创！</p>
+                    <a href="write-article.html" id="main-btn" class="mybtn">写博文</a>
+                </div>
+                <a class="more">浏览</a>
+            </div>
+        </header><!-- 页头结束 -->
+
+        <div class="content"><!-- 内容开始 -->
+            <section class="green-section" id="one">
+                <div class="wrapper">
+                    <div class="inner">
+                        <h2>这个程序在我的计算机上可以很好的运行！</h2>
+                        <div class="hr"></div>
+                        <div class="searchCon">
+                            <input id="searchKey" class="searchKey" type="text" placeholder="搜索你感兴趣的博文，问答...">
+                            <div class="search">
+                                <a href="#" id="searchBtn" class="mybtn"><i class="iconfont icon-sousuo"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="icon-group">
+                        <span class="icon">item1</span>
+                        <span class="icon">item2</span>
+                        <span class="icon">item3</span>
+                    </div>
+                </div>
+            </section>
+            <section class="gray-section">
+                <div class="article-preview cf">
+                    <div class="img-section">
+                        <img src="static/img/pic04.jpg">
+                    </div>
+                    <div class="text-section">
+                        <h2><a href="#">文章标题</a></h2>
+                        <p>A better way to work together.GitHub brings teams together to work through problems, move ideas forward, and learn from each other along the way.</p>
+                    </div>
+                </div>
+                <div class="article-preview cf">
+                    <div class="text-section">
+                        <h2><a href="#">文章标题</a></h2>
+                        <p>购买后发送下载地址到购买后发送下载地址到购买后发送下载地址到购买后发送下载地址到购买后发送下载地址到购买后发送下载地址到购买后发送下载地址到购买后发送下载地址到购买后发送下载地址到购买后发送下载地址到</p>
+                    </div>
+                    <div class="img-section">
+                        <img src="static/img/pic02.jpg">
+                    </div>
+                </div>
+                <div class="article-preview cf">
+                    <div class="img-section">
+                        <img src="static/img/pic03.jpg">
+                    </div>
+                    <div class="text-section">
+                        <h2><a href="#">文章标题</a></h2>
+                        <p>A better way to work together.GitHub brings teams together to work through problems, move ideas forward, and learn from each other along the way.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="purple-section">
+                <div class="wrapper">
+                    <div class="heading-wrapper">
+                        <h2>技术问答</h2>
+                        <div class="hr"></div>
+                        <p>
+                            A better way to work together.GitHub brings teams together to work through problems, move ideas forward, and learn from each other along the way.See how teams work together on GitHub.
+                        </p>
+                    </div>
+                    <div class="card-group cf">
+                        <div class="card">
+                            <h3><a href="#">标题</a></h3>
+                            <p>A better way to work together.GitHub brings teams together to work through problems, move ideas forward, and learn from each other along the way.See how teams work together on GitHub.</p>
+                        </div>
+                        <div class="card">
+                            <h3><a href="#">标题</a></h3>
+                            <p>A better way to work together.GitHub brings teams together to work through problems, move ideas forward, and learn from each other along the way.See how teams work together on GitHub.</p>
+                        </div>
+                        <div class="card">
+                            <h3><a href="#">标题</a></h3>
+                            <p>A better way to work together.GitHub brings teams together to work through problems, move ideas forward, and learn from each other along the way.See how teams work together on GitHub.</p>
+                        </div>
+                        <div class="card">
+                            <h3><a href="#">标题</a></h3>
+                            <p>A better way to work together.GitHub brings teams together to work through problems, move ideas forward, and learn from each other along the way.See how teams work together on GitHub.</p>
+                        </div>
+                        <div class="card">
+                            <h3><a href="#">标题</a></h3>
+                            <p>A better way to work together.GitHub brings teams together to work through problems, move ideas forward, and learn from each other along the way.See how teams work together on GitHub.</p>
+                        </div>
+                        <div class="card">
+                            <h3><a href="#">标题</a></h3>
+                            <p>A better way to work together.GitHub brings teams together to work through problems, move ideas forward, and learn from each other along the way.See how teams work together on GitHub.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div><!-- 内容结束 -->
+
+        <footer><!-- 页尾开始 -->
+            <div class="wrapper">
+                <ul class="share-group">
+                    <li><a href="blog-index.html">博文首页</a></li>
+                    <li><a href="index.html">基地主页</a></li>
+                    <li><a href="http://www.guet.edu.cn">学校主页</a></li>
+                    <li><a href="admin.php?controller=admin&method=login">管理员登录</a></li>
+                </ul>
+            </div>
+            <div class="copy">&copy 七院创新基地 - 博文 - 2017</div>
+        </footer><!-- 页尾结束 -->
+    </div>
+
+    <div class="modal fade" id="signin" role="dialog" aria-labelledby="issueModalLabel" aria-hidden="true">
+        <div class="modal-dialog rl-moal" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#loginWrap" aria-controls="loginWrap" role="tab" data-toggle="tab">登录</a></li>
+                        <li role="presentation"><a href="#registerWrap" aria-controls="registerWrap" role="tab" data-toggle="tab">注册</a></li>
+                    </ul>
+                </div>
+                <div class="modal-body">
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="loginWrap">
+                            <form action="index.php?controller=index&method=login" id="signin-form" method="post">
+                                <div class="form-item" id="userNameInput">
+                                    <input type="text" name="username" id="login-userName" class="field username" placeholder="请输入登录邮箱/用户名">
+                                    <p class="error-tip" error-hint="请输入正确的用户名"></p>
+                                </div>
+                                <div class="form-item" id="passwordInput">
+                                    <input type="password" name="password" id="login-password" class="field password" placeholder="6-16位密码，区分大小写，不能用空格">
+                                    <p class="error-tip" error-hint="请输入正确的密码"></p>
+                                </div>
+                                <div class="form-item autosignin">
+                                    <label for="auto-signin" class="autoin">
+                                        <input type="checkbox" checked="checked" class="auto-cbx" id="auto-signin">下次自动登录
+                                    </label>
+                                    <a href="#" class="forget-pass r">忘记密码</a>
+                                </div>
+                                <div class="form-item">
+                                    <input type="submit" id="signin-btn" class="mybtn btn-login" value="登 录">
+                                </div>
+                            </form>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="registerWrap">
+                            <form action="" id="register-form" method="post">
+                                <div class="form-item" id="userNameInput">
+                                    <input type="text" name="reg-userName" id="reg-userName" class="field username" placeholder="请输入用户名">
+                                    <p class="error-tip" error-hint="请输入正确的账户名"></p>
+                                </div>
+                                <div class="form-item" id="passwordInput">
+                                    <input type="password" name="reg-password" id="reg-password" class="field password" placeholder="6-16位密码，区分大小写，不能用空格">
+                                    <p class="error-tip" error-hint="请输入正确的密码"></p>
+                                </div>
+                                <div class="form-item" id="pwdRepeatInput">
+                                    <input type="password" name="reg-pwdRepeat" id="reg-pwdRepeat" class="field pwdRepeat" placeholder="请再次确认密码">
+                                    <p class="error-tip" error-hint="请输入正确的密码"></p>
+                                </div>
+                                <div class="form-item" id="emailInput">
+                                    <input type="email" name="reg-email" id="reg-email" class="field email" placeholder="请输入邮箱">
+                                    <p class="error-tip" error-hint="请输入邮箱"></p>
+                                </div>
+                                <div class="form-item">
+                                    <input type="button" id="signup-btn" class="mybtn btn-login" value="注 册">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="pop-login-sns">
+                        <span>其他方式登录</span>
+                        <div class="other-login">
+                            <a href="#" class="pop-sns-qq"><i class="iconfont icon-qq"></i></a>
+                            <a href="#" class="pop-sns-weixin"><i class="iconfont icon-weixin"></i></a>
+                            <a href="#" class="pop-sns-weibo"><i class="iconfont icon-weibo"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mask"></div>
+    <div id="sidebar">
+        <ul>
+            <li><a href="user-index.html">个人主页</a></li>
+            <li><a href="#">写博文</a></li>
+            <li><a href="#">item4</a></li>
+            <li><a href="#">item4</a></li>
+            <li><a href="#">退出登录</a></li>
+        </ul>
+        <a href="#sidebar" class="close_sidebar"></a>
+    </div>
+    <a class="back-to-top mybtn">回到顶部</a>
+
+    <?php $_smarty_tpl->_subTemplateRender('file:index/script_js.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
+    <?php echo '<script'; ?>
+ type="text/javascript">
+        $(function(){
+            var banner = $("#banner"),
+                nav = $("#nav"),
+                more = $(".more");
+            $(window).on("scroll",function(){
+                if($(window).scrollTop() >= (banner.height()-nav.height())){
+                    $("#nav").removeClass("alt");
+                }else{
+                    $("#nav").addClass("alt");
+                }
+            });
+            //浏览器刷新触发scroll事件
+            $(window).trigger("scroll");
+
+            more.on("click",function(){
+                $("html, body").animate({
+                    scrollTop: banner.height()-nav.height() + "px"
+                }, 1200);
+            });
+
+            // $("#signin").modal("show");
+            // $("#signin").modal("hide");
+        });
+    <?php echo '</script'; ?>
+>
+</body>
+</html><?php }
+}
