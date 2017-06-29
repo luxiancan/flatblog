@@ -1,0 +1,188 @@
+/* 登录注册页面 */
+.sig-head{
+    width: 100%;
+    height: 140px;
+    text-align: center;
+    background-color: #e2edff;
+}
+.sig-head .logo{
+    display: inline-block;
+    height: 120px;
+    width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-top: 10px;
+}
+.sig-head .logo img{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.main{
+    margin: 0;
+    padding: 20px 0;
+    width: 100%;
+    min-height: 660px;
+}
+.main .page-wrap{
+    padding: 20px;
+}
+.page-content{
+    width: 360px;
+    margin: 0 auto;
+    padding: 10px 0;
+    transition: all .3s;
+}
+@media screen and (max-width: 480px){
+    .page-content{
+        width: 300px;
+    }
+}
+.page-header{
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+.page-header h2{
+    color: #14191e;
+    font-size: 24px;
+    line-height: 24px;
+}
+.page-header .link-info{
+    position: relative;
+    line-height: 32px;
+}
+.page-header .link-info h3{
+    float: left;
+    line-height: 32px;
+    font-size: 12px;
+    color: #b5b9bc;
+}
+.page-header .link-info .right-back{
+    float: right;
+    line-height: 32px;
+    font-size: 14px;
+    color: #3150de;
+}
+.tips{
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    color: #ed4933;
+}
+.page-header .page-top{
+    height: 36px;
+    line-height: 36px;
+}
+.page-header .page-top h2{
+    line-height: 36px;
+}
+.page-header .page-top .right-wrap{
+    display: inline-block;
+    height: 24px;
+    line-height: 24px;
+    margin-top: 12px;
+}
+.page-header .page-top .right-wrap .no-register{
+    color: #3150de;
+}
+.page-wrap .autoin,
+.page-wrap .forget-pass{
+    color: #333;
+    font-size: 14px;
+}
+.page-wrap .forget-pass:hover{
+    color: #3150de;
+}
+.page-wrap .page-footer{
+    text-align: left;
+    padding: 20px;
+}
+.form-item{
+    width: 100%;
+    line-height: 40px;
+    font-size: 14px;
+}
+.form-item .field{
+    width: 100%;
+    height: 42px;
+    padding-left: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    transition: all .3s;
+}
+@media screen and (max-width: 480px){
+    .form-item .field{
+        font-size: 12px;
+    }
+}
+.form-item .field:focus{
+    border-color: #98a1a6;
+}
+.form-item .error-tip{
+    color: #ed4933;
+    height: 23px;
+    line-height: 23px;
+    font-size: 12px;
+}
+.autosignin{
+    line-height: 14px;
+    margin-bottom: 20px;
+}
+.autosignin .autoin{
+    font-weight: normal;
+}
+.autosignin .auto-cbx{
+    margin: 0 10px 0 0;
+    vertical-align: -1px;
+}
+.form-item .btn-login{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    text-align: center;
+}
+.pop-login-sns{
+    display: flex;
+    flex-wrap: wrap;
+    height: 24px;
+    line-height: 24px;
+}
+.pop-login-sns .other-login{
+    margin-left: 30px;
+}
+.other-login a{
+    display: inline-block;
+    margin: 0 10px;
+    transition: all .3s;
+}
+@media screen and (max-width: 480px){
+    .other-login a{
+        margin: 0 5px;
+    }
+}
+.other-login .iconfont{
+    display: inline-block;
+    font-size: 24px;
+    line-height: 24px;
+    color: #b5b9bc;
+    transition: color .2s;
+}
+.other-login .icon-qq:hover{
+    color: #08c;
+}
+.other-login .icon-weixin:hover{
+    color: #00b33b;
+}
+.other-login .icon-weibo:hover{
+    color: #f14a3b;
+}
+
+/* 登录注册 end*/
+.vright{
+    line-height: 50px;
+    text-align: center;
+    color: #b5b9bc;
+    font-size: 12px;
+}

@@ -1,0 +1,629 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+body,div,section,h1,h2,h3,h4,h5,h6,ul,li,p,dl,dt,dd,button,textarea,input,p,th,td,blockquote,form,label{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: "microsoft Yahei";
+}
+address, caption, cite, code, dfn, em, strong, th, var, optgroup, label{
+    font-style: normal;
+    font-weight: 400;
+}
+h1,h2,h3,h4,h5,h6{
+    font-size: 100%;
+    font-weight: 400;
+}
+ul{
+    list-style: none;
+}
+a,a:hover, a:focus {
+    text-decoration: none;
+    cursor: pointer;
+}
+a{
+    color: #333;
+}
+a:hover{
+    color: #1b80be;
+}
+input,textarea{
+    outline:none;
+}
+input,button,textarea,select{
+    border: 0;
+}
+.cf:before, .cf:after {
+    content: '';
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.btn-comment{
+    color: #fff;
+    background-color: #3e8ad5;
+    border-color: #3e8ad5;
+    border-radius: 0;
+    transition: all .2s;
+}
+.btn-comment:hover,
+.btn-comment:focus{
+    color: #fff;
+    background-color: #3c7ab6;
+    border-color: #3c7ab6;
+}
+.btn-alarming{
+    color: #fff;
+    background-color: #e24646;
+    border-color: #e24646;
+    border-radius: 0;
+    transition: all .2s;
+}
+.btn-alarming:hover,
+.btn-alarming:focus{
+    color: #fff;
+    background-color: #b84444;
+    border-color: #b84444;
+}
+.input-group .input-group-btn .btn-comment{
+    margin: 0;
+}
+
+/* 管理员登录 */
+.login-wrap{
+    background: #444 url(../img/login_background2.jpg) no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center center;
+    overflow: hidden;
+    height: 100vh;
+}
+.login-wrap .back_mask{
+    background: rgba(0,0,0,.5);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-box{
+    width: 360px;
+    padding: 30px;
+    background: #3e4c69;
+    color: #fff;
+}
+.login-box .login-header{
+    height: 40px;
+    line-height: 40px;
+}
+.login-box .login-header .title{
+    font-size: 22px;
+    line-height: 40px;
+    color: #fff;
+    text-align: center;
+    font-weight: 400;
+}
+.login-box .login-body{
+    margin: 20px 0;
+}
+.login-box .login-body .input-group{
+    width: 100%;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.login-box .login-body .input-group .input-item{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 0;
+    font-size: 14px;
+    padding-left: 12px;
+    color: #333;
+}
+.login-box .login-body .input-group .error-tip{
+    font-size: 12px;
+    height: 20px;
+    line-height: 20px;
+    color: #ff6565;
+}
+.login-box .login-body .forget-pass{
+    color: #ddd;
+    font-size: 14px;
+}
+.login-box .login-body .forget-pass:hover{
+    color: #ff6565;
+}
+.login-box .login-body .btn-login{
+    display: inline-block;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background: #588fae;
+    transition: all .2s;
+}
+.login-box .login-body .btn-login:hover{
+    background: #6dabcd;
+}
+
+
+/* 头部导航 */
+.top-navbar{
+    height: 60px;
+    background-color: #2a2c2e;
+    padding: 0 10px;
+    margin: 0;
+    border: none;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+}
+.top-navbar .logo{
+    height: 100%;
+}
+.top-navbar .logo .title-text{
+    font-size: 22px;
+    line-height: 60px;
+}
+.top-navbar .right-wrap{
+    display: flex;
+    flex-wrap: wrap;
+}
+.top-navbar .right-wrap .front-page{
+    margin-right: 20px;
+}
+.top-navbar .right-wrap .front-page a{
+    display: block;
+    height: 60px;
+    line-height: 60px;
+    padding: 0 10px;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+}
+.top-navbar .admin-card-box{
+    width: 80px;
+    height: 60px;
+    position: relative;
+    transition: all .2s;
+}
+.admin-card-box .admin-avator{
+    display: block;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    color: #787d82;
+    float: left;
+}
+.admin-card-box .admin-card{
+    line-height: 60px;
+    cursor: pointer;
+}
+.admin-card-box .admin-avator img{
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: inline-block;
+}
+.admin-card-box .caret{
+    float: left;
+    display: inline-block;
+    margin-top: 28px;
+    border-top: 5px solid;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+}
+.top-navbar .front-page:hover,
+.top-navbar .admin-card-box:hover{
+    background-color: rgba(77, 85, 93, 0.5);
+}
+.admin-card-box:hover .logout{
+    display: block;
+}
+.admin-card-box .logout{
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 120px;
+    background: #fff;
+    display: none;
+}
+.admin-card-box .logout li{
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(7,17,27,.2);
+    padding: 8px 20px 8px 0;
+}
+.admin-card-box .logout a{
+    float: right;
+    color: #222;
+}
+
+.main{
+    margin-top: 60px;
+}
+
+/* 左侧导航 */
+.left-nav{
+    width: 200px;
+    min-height: 680px;
+    float: left;
+    background: #fff;
+}
+.left-nav .title{
+    width: 200px;
+    height: 80px;
+    background: #575758;
+    color: #fff;
+}
+.left-nav .title .admin-avator{
+    float: left;
+    margin-left: 20px;
+    border-radius: 50%;
+    line-height: 80px;
+}
+.left-nav .title .admin-avator img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.left-nav .title .admin-info{
+    float: left;
+    height: 80px;
+    width: 100px;
+    margin-left: 10px;
+}
+.left-nav .title .admin-info .admin-name{
+    display: inline-block;
+    width: 100%;
+    line-height: 22px;
+    font-size: 14px;
+    color: #fff;
+    margin-top: 17px;
+}
+.left-nav .title .admin-info p{
+    display: inline-block;
+    width: 100%;
+    line-height: 22px;
+    color: #d6d6d6;
+}
+.left-nav .nav-list{
+    width: 200px;
+    background: #fff;
+}
+.nav-list .nav-tabs{
+    border: none;
+}
+.nav-list .nav-tabs>li{
+    float: none;
+    margin: 0;
+}
+.nav-list .nav-tabs>li>a{
+    border-radius: 0;
+    margin: 0;
+    border: none;
+    padding: 12px 0;
+    padding-left: 36px;
+    font-size: 14px;
+}
+.nav-list .nav-tabs>li>a>i{
+    padding-right: 10px;
+    font-size: 18px;
+    color: #333;
+    line-height: 20px;
+}
+.nav-list .nav-tabs>li:hover{
+    background-color: #eee;
+}
+.nav-list .nav-tabs>li>a:hover{
+    background-color: transparent;
+}
+.nav-list .nav-tabs>li.active{
+    background: #3e8ad5;
+}
+.nav-list .nav-tabs>li.active>a,
+.nav-list .nav-tabs>li.active>a:focus{
+    background-color: transparent;
+    border: none;
+    color: #fff;
+}
+.nav-list .nav-tabs>li.active>a>i{
+    color: #ddd;
+}
+
+/* 主体内容 */
+.content-wrap{
+    margin-left: 200px;
+    min-height: 680px;
+    background: #eee;
+}
+.content-wrap .content{
+    padding: 20px;
+}
+.content .sub-nav .breadcrumb{
+    background: transparent;
+    border-bottom: 2px solid #ddd;
+    font-size: 16px;
+}
+.content .sub-nav .breadcrumb>.active{
+    color: #888;
+}
+.home .box-wrap ul{
+    display: flex;
+    flex-wrap: wrap;
+}
+.home .box-wrap .box-group{
+    width: 33.33%;
+    height: 100px;
+    color: #fff;
+    transition: all .3s;
+}
+.home .box-wrap .box-group:hover{
+    opacity: .8;
+}
+.home .box-wrap .box-group .box{
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    font-size: 16px;
+}
+.home .box-wrap .box-group .box span{
+    display: inline-block;
+    padding: 10px;
+}
+.home .box-wrap .box-group .box i{
+    display: block;
+    line-height: 1;
+    font-size: 40px;
+    text-align: center;
+}
+.home .box-wrap .box-group:nth-child(1){
+    background: #33b3b3;
+}
+.home .box-wrap .box-group:nth-child(2){
+    background: #e47438;
+}
+.home .box-wrap .box-group:nth-child(3){
+    background: #269ee0;
+}
+.home .box-wrap .box-group:nth-child(4){
+    background: #7947a6;
+}
+.home .box-wrap .box-group:nth-child(5){
+    background: #514745;;
+}
+
+.details_operation{
+    width: 100%;
+    height: 34px;
+    line-height: 34px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+}
+.details_operation.right{
+    justify-content: flex-end;
+}
+.details_operation .right-wrap .status-wrap{
+    display: inline-block;
+    float: left;
+    margin-right: 30px;
+}
+.details_operation .right-wrap .status-wrap .status-select{
+    float: left;
+    background: #cbe5ff;
+}
+.details_operation .right-wrap .status-wrap .select{
+    height: 34px;
+    margin: 0 8px;
+    background: transparent;
+    padding: 0 6px;
+}
+.details_operation .input-group.search{
+    width: 300px;
+}
+.details_operation .input-group.search .form-control,
+.details_operation .input-group.search .btn{
+    border-radius: 0;
+}
+.main-con .table-wrap{
+    min-height: 430px;
+}
+.main-con .table,
+.main-con .table>thead>tr>th,
+.main-con .table>tbody>tr>td,
+.main-con .table>tfoot>tr>td{
+    border: 1px solid #fff;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.main-con .table>tbody>tr>td.title{
+    text-align: left;
+}
+.main-con .table a{
+    color: #3976b2;
+}
+.main-con .table a:hover{
+    color: #df2a2a;
+}
+.main-con .table>thead{
+    background: #3976b2;
+    color: #fff;
+}
+.main-con .table>thead .label{
+    color: #fff;
+}
+.main-con .table>thead th.title{
+    width: 40%;
+}
+.main-con .table .label{
+    color: #333;
+    font-weight: 400;
+}
+.main-con .table>tbody>tr:nth-child(odd){
+    background: #cbe5ff;
+}
+.main-con .table>tbody>tr:nth-child(even){
+    background: #e0eefb;
+}
+.main-con .table>tbody>tr:hover{
+    background: #eae3cd;
+}
+
+/* 翻页条 */
+.page{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    line-height: 32px;
+    font-size: 14px;
+}
+.page a,
+.page span{
+    display: inline-block;
+    background: #fff;
+    height: 32px;
+    line-height: 32px;
+    border: 1px solid #ddd;
+    padding: 0 12px;
+    margin: 0 4px;
+    color: #333;
+}
+.page .ebtn{
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    text-align: center;
+}
+.page .gopage{
+    height: 32px;
+    line-height: 32px;
+    border: none;
+    padding: 0;
+    margin: 0 4px;
+}
+.page .page-text,
+.page .gobtn{
+    vertical-align: top;
+}
+.page .page-text{
+    border: 1px solid #ddd;
+    width: 56px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+}
+.page .gobtn{
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 0 6px;
+    margin: 0 0 0 -1px;
+    cursor: pointer;
+    transition: all .2s;
+}
+.page .gobtn:hover{
+    background: #3e8ad5;
+    border-color: #3e8ad5;
+    color: #fff;
+}
+.page a{
+    text-decoration: none;
+}
+.page a:hover{
+    border-color: #3e8ad5;
+}
+.page .active{
+    background: #3e8ad5;
+    border-color: #3e8ad5;
+    color: #fff;
+}
+
+
+.content .revise{
+    padding: 0 0 0 16px;
+}
+.content .revise .top{
+    display: inline-block;
+    font-size: 20px;
+    line-height: 40px;
+    color: #333;
+}
+.revise .top h3{
+    line-height: 40px;
+}
+.revise .top h4{
+    line-height: 32px;
+    font-size: 18px;
+}
+.revise .desc{
+    padding: 10px 0;
+    line-height: 22px;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+.revise .title{
+    display: inline-block;
+    line-height: 30px;
+    margin-right: 12px;
+}
+.revise .ipt-group .title{
+    width: 124px;
+    text-align: right;
+    vertical-align: top;
+}
+.revise .select-item{
+    display: inline-block;
+    margin-right: 20px;
+    padding: 0 10px;
+    line-height: 30px;
+    background: #cbe5ff;
+}
+.revise .ipt-item{
+    display: inline-block;
+    margin-right: 20px;
+}
+.revise .ipt-item .ipt{
+    display: inline-block;
+    border: 1px solid #ddd;
+    background: #cbe5ff;
+    line-height: 30px;
+    padding: 0 10px;
+    width: 200px;
+}
+.revise .ipt-item .ipt:focus{
+    border-color: #8e8c8c;
+}
+.revise .ipt-btm{
+    display: inline-block;
+    width: 100%;
+    padding: 20px 0;
+}
+.error-tip{
+    color: #ed4933;
+    height: 23px;
+    line-height: 23px;
+    font-size: 12px;
+}
+
+
+.admin-card-box .logout a:hover{
+    color: #f01414;
+}
