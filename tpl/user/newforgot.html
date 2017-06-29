@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>扁平化博客-忘记密码</title>
+    {include file='index/link_css.html'}
+    <link rel="stylesheet" href="static/css/login.css">
+    <style id="antiClickjack">body{ display: none !important; }</style>
+</head>
+<body>
+    <div class="sig-head">
+        <a href="index.php" class="logo">
+            <img src="static/img/logo1.png">
+        </a>
+    </div>
+    <div class="main">
+        <div class="page-wrap">
+            <div class="page-content" id="js-forgot-content">
+                <div class="page-header">
+                    <div class="page-title">
+                        <h2>忘记密码</h2>
+                    </div>
+                    <div class="link-info cf">
+                        <h3>通过注册邮箱重设密码</h3>
+                        <a href="index.php?controller=user&method=newlogin" class="right-back">返回立即登录</a>
+                    </div>
+                </div>
+                <div class="page-body">
+                    <form id="forgot-form">
+                        <p class="tips" id="js-forgot-error"></p>
+                        <div class="form-item">
+                            <input type="text" name="username" id="forgot-userName" class="field username" placeholder="请输入登录名" autocomplete="off">
+                            <p class="error-tip" error-hint="请输入正确的用户名"></p>
+                        </div>
+                        <div class="form-item">
+                            <input type="text" name="email" id="forgot-email" class="field email" placeholder="请输入登录邮箱" autocomplete="off">
+                            <p class="error-tip" error-hint="请输入正确的邮箱"></p>
+                        </div>
+                        <div class="form-item">
+                            <a id="js-forgot-submit" class="mainbtn btn-login">提 交</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="page-content hide" id="js-forgot-result">
+                <div class="page-header">
+                    <div class="page-title">
+                        <h2>设置新密码</h2>
+                    </div>
+                    <div class="link-info cf">
+                        <h3>请在下方输入你的新密码</h3>
+                        <a href="index.php?controller=user&method=newforgot" class="right-back">返回修改登录名</a>
+                    </div>
+                </div>
+                <div class="page-body">
+                    <form id="forgot-result-form">
+                        <p class="tips" id="js-forgot-result-error"></p>
+                        <div class="form-item">
+                            <input type="text" name="password" id="js-newpassword" class="field password" placeholder="请输入新密码">
+                            <p class="error-tip" error-hint="请输入正确的密码"></p>
+                        </div>
+                        <div class="form-item">
+                            <input type="password" name="password" id="js-repeat-newpwd" class="field password" placeholder="请再次输入新密码">
+                            <p class="error-tip" error-hint="请输入正确的密码"></p>
+                        </div>
+                        <div class="form-item hide">
+                            <input type="text" id="js-forgot-username-ipt" class="field" placeholder="请输入登录名">
+                            <p class="error-tip" error-hint="请输入正确的用户名"></p>
+                        </div>
+                        <div class="form-item hide">
+                            <input type="text" id="js-forgot-email-ipt" class="field" placeholder="请输入登录邮箱">
+                            <p class="error-tip" error-hint="请输入正确的邮箱"></p>
+                        </div>
+                        <div class="form-item">
+                            <a id="js-newpwd-submit" class="mainbtn btn-login">提 交</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="vright">&copy;&nbsp;2017&nbsp;flatblog.com All Rights Reserved</div>
+    {include file='index/script_js.html'}
+    <script src="static/js/forgot.js"></script>
+    <script type="text/javascript">
+        if(self === top){
+            var antiClickjack = $("#antiClickjack");
+            antiClickjack.remove();
+        }else{
+            top.location = self.location;
+        }
+    </script>
+</body>
+</html>
